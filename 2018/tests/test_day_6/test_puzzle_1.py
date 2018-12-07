@@ -1,5 +1,5 @@
 """Use this file to test the functions in day 6 puzzle 1."""
-from code.day_6.puzzle_1 import get_largest_distance
+from src.day_6.puzzle_1 import get_largest_distance
 
 
 def test_puzzle_1():
