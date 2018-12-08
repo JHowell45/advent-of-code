@@ -1,0 +1,1 @@
+from tests.fixtures.day_6.shared_functions import parse_points_class

@@ -15,7 +15,7 @@ class ParsePoints:
 
     @id.setter
     def id(self, new_points_id):
-        self._id = str(new_points_id)
+        self._id = None if new_points_id is None else str(new_points_id)
 
     @property
     def x(self):
