@@ -4,19 +4,18 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+
+[dev-packages]
 pytest = "*"
 black = "*"
 "flake8" = "*"
 "pep8" = "*"
 pylint = "*"
-tox = "*"
 pytest-black = "*"
-
-[dev-packages]
-black = "*"
+pytest-cov = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.6"
 
 [pipenv]
 allow_prereleases = true
