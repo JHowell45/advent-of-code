@@ -43,6 +43,11 @@ class ParsePoints:
     def geo_points(self):
         return (self.y, self.x)
 
+    @geo_points.setter
+    def geo_points(self, new_geo_points):
+        self.y = new_geo_points[0]
+        self.x = new_geo_points[1]
+
     @property
     def close_points(self):
         return self._close_points

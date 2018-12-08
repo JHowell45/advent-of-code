@@ -47,3 +47,53 @@ class TestParsePoints:
     def test_add_y_value(self, parse_points_class, y, request, y_parse_point_value):
         parse_points_class.y = request.getfixturevalue(y)
         assert parse_points_class.y == y_parse_point_value
+
+    def test_geo_points_type(self, parse_points_class):
+        assert isinstance(parse_points_class.geo_points, tuple)
+
+    def test_geo_points_value(
+        self, parse_points_class, y_parse_point_value, x_parse_point_value
+    ):
+        assert parse_points_class.geo_points == (
+            y_parse_point_value,
+            x_parse_point_value,
+        )
+
+    def test_add_geo_points_type(
+        self, parse_points_class, y_parse_point_value, x_parse_point_value
+    ):
+        parse_points_class.geo_points = (y_parse_point_value, x_parse_point_value)
+        assert isinstance(parse_points_class.geo_points, tuple)
+
+    def test_add_geo_points_value(
+        self, parse_points_class, y_parse_point_value, x_parse_point_value
+    ):
+        parse_points_class.geo_points = (y_parse_point_value, x_parse_point_value)
+        assert parse_points_class.geo_points == (
+            parse_points_class.y,
+            parse_points_class.x,
+        )
+
+    def test_close_points_type(self, parse_points_class):
+        assert isinstance(parse_points_class.close_points, set)
+
+    def test_close_points_value(
+        self, parse_points_class, y_parse_point_value, x_parse_point_value
+    ):
+        assert parse_points_class.close_points == {
+            (x_parse_point_value, y_parse_point_value)
+        }
+
+    def test_add_close_points_type(
+        self, parse_points_class, y_parse_point_value, x_parse_point_value
+    ):
+        parse_points_class.close_points = {(x_parse_point_value, y_parse_point_value)}
+        assert isinstance(parse_points_class.close_points, set)
+
+    def test_add_close_points_value(
+        self, parse_points_class, y_parse_point_value, x_parse_point_value
+    ):
+        parse_points_class.close_points = {(x_parse_point_value, y_parse_point_value)}
+        assert parse_points_class.close_points == {
+            (parse_points_class.x, parse_points_class.y)
+        }
