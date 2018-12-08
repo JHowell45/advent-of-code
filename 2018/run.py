@@ -18,7 +18,7 @@ def run_day_1_puzzle_2():
 
 @banner("Day 6, Puzzle 1")
 def run_day_6_puzzle_1():
-    data = generate_file_data("./src/day_6/puzzle_data.txt")
+    data = list(generate_file_data("./src/day_6/puzzle_data.txt"))
     print(f"Largest Area: {get_largest_distance(data)}")
 
 

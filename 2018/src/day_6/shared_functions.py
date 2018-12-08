@@ -65,7 +65,7 @@ class ParsePoints:
         else:
             raise TypeError(
                 "The 'close_point' is of the incorrect type. "
-                "Should be of type '{}' and not '{}'".format('tuple', type(close_point))
+                "Should be of type '{}' and not '{}'".format("tuple", type(close_point))
             )
 
     @property
@@ -76,11 +76,15 @@ class ParsePoints:
     def generate_parsed_points(points):
         alphabet = list(ascii_lowercase)
         for index, point in enumerate(points):
-            yield ParsePoints(point, alphabet[index].upper())
+            rounds = int(index / len(alphabet)) + 1
+            index = index % len(alphabet)
+            # print(f"Round: {rounds}, Index: {index}")
+            yield ParsePoints(point, (rounds * alphabet[index].upper()))
 
     def __repr__(self):
         return (
-            "<ParsePoints ID: {}, X: {}, Y: {}, Number of Closest Points: {}>".format(
+            "<ParsePoints ID: {}, X: {}, Y: {}, "
+            "Number of Closest Points: {}>".format(
                 self.id, self.x, self.y, self.get_number_of_closest_points
             )
         )
@@ -242,5 +246,5 @@ class Manhatten:
 
     def __repr__(self):
         return "<Manhatten Points: {}, X: {}, Y: {}, Length: {}>".format(
-            self.points, self.x_points, self.y_points, self.points_length
+            len(self.points), self.max_x, self.max_y, self.points_length
         )
