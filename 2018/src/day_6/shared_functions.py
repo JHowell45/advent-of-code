@@ -54,10 +54,19 @@ class ParsePoints:
 
     @close_points.setter
     def close_points(self, new_close_points):
-        self._close_points = new_close_points
+        if isinstance(new_close_points, set):
+            self._close_points = new_close_points
+        else:
+            self._close_points = {new_close_points}
 
     def add_close_point(self, close_point):
-        self._close_points.add(close_point)
+        if isinstance(close_point, tuple):
+            self._close_points.add(close_point)
+        else:
+            raise TypeError(
+                "The 'close_point' is of the incorrect type. "
+                "Should be of type '{}' and not '{}'".format('tuple', type(close_point))
+            )
 
     @property
     def get_number_of_closest_points(self):
@@ -71,8 +80,7 @@ class ParsePoints:
 
     def __repr__(self):
         return (
-            "<ParsePoints ID: {}, X: {}, Y: {}, Number of "
-            "Closest Points: {}>".format(
+            "<ParsePoints ID: {}, X: {}, Y: {}, Number of Closest Points: {}>".format(
                 self.id, self.x, self.y, self.get_number_of_closest_points
             )
         )

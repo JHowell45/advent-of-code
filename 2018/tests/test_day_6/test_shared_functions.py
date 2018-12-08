@@ -84,16 +84,50 @@ class TestParsePoints:
             (x_parse_point_value, y_parse_point_value)
         }
 
-    def test_add_close_points_type(
+    def test_replace_close_points_type(
         self, parse_points_class, y_parse_point_value, x_parse_point_value
     ):
         parse_points_class.close_points = {(x_parse_point_value, y_parse_point_value)}
         assert isinstance(parse_points_class.close_points, set)
 
-    def test_add_close_points_value(
+    def test_replace_close_points_value(
         self, parse_points_class, y_parse_point_value, x_parse_point_value
     ):
         parse_points_class.close_points = {(x_parse_point_value, y_parse_point_value)}
         assert parse_points_class.close_points == {
             (parse_points_class.x, parse_points_class.y)
         }
+
+    def test_add_close_points_type(
+        self, parse_points_class, y_parse_point_value, x_parse_point_value
+    ):
+        parse_points_class.add_close_point((x_parse_point_value, y_parse_point_value))
+        assert isinstance(parse_points_class.close_points, set)
+
+    def test_add_close_points_value(
+        self, parse_points_class, y_parse_point_value, x_parse_point_value
+    ):
+        parse_points_class.add_close_point((x_parse_point_value, y_parse_point_value))
+        assert parse_points_class.close_points == {
+            (parse_points_class.x, parse_points_class.y)
+        }
+
+    def test_get_number_of_closest_points_type(self, parse_points_class):
+        assert isinstance(parse_points_class.get_number_of_closest_points, int)
+
+    def test_get_number_of_closest_points_value(
+        self, parse_points_class, y_parse_point_value, x_parse_point_value
+    ):
+        assert parse_points_class.get_number_of_closest_points == len(
+            parse_points_class.close_points
+        )
+
+    def test_repr(self, parse_points_class):
+        assert repr(parse_points_class) == (
+            "<ParsePoints ID: {}, X: {}, Y: {}, Number of Closest Points: {}>".format(
+                parse_points_class.id,
+                parse_points_class.x,
+                parse_points_class.y,
+                parse_points_class.get_number_of_closest_points,
+            )
+        )
