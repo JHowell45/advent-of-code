@@ -23,7 +23,10 @@ class ParsePoints:
 
     @x.setter
     def x(self, new_x_point):
-        self._x = int(new_x_point.split(",")[0].strip())
+        if isinstance(new_x_point, int):
+            self._x = new_x_point
+        else:
+            self._x = int(new_x_point.split(",")[0].strip())
 
     @property
     def y(self):
@@ -31,7 +34,10 @@ class ParsePoints:
 
     @y.setter
     def y(self, new_y_point):
-        self._y = int(new_y_point.split(",")[1].strip())
+        if isinstance(new_y_point, int):
+            self._y = new_y_point
+        else:
+            self._y = int(new_y_point.split(",")[1].strip())
 
     @property
     def geo_points(self):

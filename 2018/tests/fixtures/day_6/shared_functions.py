@@ -8,6 +8,21 @@ import pytest
 from src.day_6.shared_functions import ParsePoints
 
 
-@pytest.fixture(params=["242, 164", "82, 142"])
-def parse_points_class(request):
-    return ParsePoints(request.param)
+@pytest.fixture
+def x_parse_point_value():
+    return 242
+
+
+@pytest.fixture
+def y_parse_point_value():
+    return 164
+
+
+@pytest.fixture
+def parse_point_string(x_parse_point_value, y_parse_point_value):
+    return f"{x_parse_point_value}, {y_parse_point_value}"
+
+
+@pytest.fixture()
+def parse_points_class(parse_point_string):
+    return ParsePoints(parse_point_string)
