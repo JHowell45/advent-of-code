@@ -23,17 +23,7 @@ then add together all the fuel values.
 What is the sum of the fuel requirements for all of the modules on your spacecraft?
 """
 
-
-def calculate_fuel(mass: int) -> int:
-    """Use this function for calculating the fuel requirements for a module.
-
-    This function is used for calculating the fuel requirements for a module based on
-    its mass.
-
-    :param mass: the mass of the module.
-    :return: the calculated fuel.
-    """
-    return int(mass / 3) - 2
+from .shared_functions import calculate_fuel, get_puzzle_input
 
 
 def calculate_total_fuel_requirement() -> int:
@@ -44,6 +34,4 @@ def calculate_total_fuel_requirement() -> int:
 
     :return: the total fuel requirement.
     """
-    with open("puzzle_data.txt") as f:
-        content = f.readlines()
-    return sum([calculate_fuel(int(mass)) for mass in content])
+    return sum([calculate_fuel(int(mass)) for mass in get_puzzle_input()])
