@@ -1,13 +1,13 @@
-from code._2018.src.day_1.puzzle_1 import calculate_frequence
+from code._2018.shared_functions import banner, generate_file_data
+from code._2018.src.day_1.puzzle_1 import calculate_frequency
 from code._2018.src.day_1.puzzle_2 import find_repeat_frequency
 from code._2018.src.day_6.puzzle_1 import get_largest_distance
-from code._2018.shared_functions import banner, generate_file_data
 
 
 @banner("Day 1, Puzzle 1")
 def run_day_1_puzzle_1():
     data = generate_file_data("./src/day_1/puzzle_data.txt")
-    print(f"Final Frequency: {calculate_frequence(data)}")
+    print(f"Final Frequency: {calculate_frequency(data)}")
 
 
 @banner("Day 1, Puzzle 2")
