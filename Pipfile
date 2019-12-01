@@ -13,6 +13,9 @@ tox = "*"
 
 [dev-packages]
 black = "*"
+pytest-black = "*"
+pytest-isort = "*"
+pytest-flakes = "*"
 
 [requires]
 python_version = "3.7"
