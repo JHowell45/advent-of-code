@@ -34,3 +34,16 @@ def calculate_fuel(mass: int) -> int:
     :return: the calculated fuel.
     """
     return int(mass / 3) - 2
+
+
+def calculate_total_fuel_requirement() -> int:
+    """Use this function to return the total fuel requirements for all of the modules.
+
+    This function is used for reading the text file of puzzle data and returning the
+    total amount of fuel that is required for the modules.
+
+    :return: the total fuel requirement.
+    """
+    with open("puzzle_data.txt") as f:
+        content = f.readlines()
+    return sum([calculate_fuel(int(mass)) for mass in content])
