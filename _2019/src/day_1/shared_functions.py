@@ -1,5 +1,6 @@
 """Use this file to include shared function for the day 1 puzzles."""
 from os.path import abspath, realpath
+from typing import Generator
 
 
 def calculate_fuel(mass: int) -> int:
@@ -14,7 +15,7 @@ def calculate_fuel(mass: int) -> int:
     return int(mass / 3) - 2
 
 
-def get_puzzle_input() -> int:
+def get_puzzle_input() -> Generator[int, None, None]:
     """Use this function to get the puzzle data input in the correct format.
 
     This function is used for iterating over the puzzle data file and returning the
