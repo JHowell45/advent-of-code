@@ -1,7 +1,7 @@
-"""Use the functions in this file in all of the other code files.
+"""Use the functions in this file in all of the other src files.
 
 This file contains the functions that will be used across all of the challenges
-and code.
+and src.
 """
 from os.path import abspath
 
@@ -10,7 +10,7 @@ def generate_file_data(filepath):
     """Use this function to return the data a line at a time.
 
     This function is used for returning the data from the text file one line at
-    a time, the data is being returned as geenrator.
+    a time, the data is being returned as generator.
 
     :param filepath: the path to the data file to use.
     :type filepath: str
