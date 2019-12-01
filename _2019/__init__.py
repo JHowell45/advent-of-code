@@ -1,4 +1,7 @@
-from src.day_1 import calculate_total_fuel_requirement
+try:
+    from _2019.src.day_1 import calculate_total_fuel_requirement
+except ImportError:
+    from src.day_1 import calculate_total_fuel_requirement
 
 
 def main():
