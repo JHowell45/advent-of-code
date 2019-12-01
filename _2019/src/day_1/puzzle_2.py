@@ -30,10 +30,18 @@ What is the sum of the fuel requirements for all of the modules on your spacecra
 also taking into account the mass of the added fuel? (Calculate the fuel requirements
 for each module separately, then add them all up at the end.)
 """
-from .shared_functions import calculate_fuel
+from .shared_functions import calculate_fuel, get_puzzle_input
 
 
 def calculate_all_fuel_requirements(mass: int) -> int:
+    """Use this function to return the total fuel for a single mass and its fuel.
+
+    This function is used for calculating the fuel cost for both the mass and it's
+    own fuel.
+
+    :param mass: the mass of the module.
+    :return: the total fuel cost for the mass and it's own fuel.
+    """
     total_fuel = 0
     fuel = mass
     while True:
@@ -42,3 +50,16 @@ def calculate_all_fuel_requirements(mass: int) -> int:
             total_fuel += fuel
         else:
             return total_fuel
+
+
+def calculate_total_fuel_for_mass_and_fuel() -> int:
+    """Use this function to return the total fuel for all of the modules.
+
+    This function is used for returning the total fuel cost for all of the module
+    masses and their own fuel.
+
+    :return: the total fuel cost.
+    """
+    return sum(
+        [calculate_all_fuel_requirements(int(mass)) for mass in get_puzzle_input()]
+    )
