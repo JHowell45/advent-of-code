@@ -1,5 +1,5 @@
 from itertools import combinations
-from typing import List, Tuple, Union
+from typing import List, Union
 
 
 class IntCode:
@@ -52,7 +52,7 @@ class IntCode:
                 raise ValueError(f"Incorrect opcode '{opcode}'!!")
         return final_state
 
-    def calculate_verb_and_noun(self, output: int) -> Tuple[int, int]:
+    def calculate_verb_and_noun(self, output: int) -> int:
         for noun, verb in combinations(range(100), 2):
             updated_initial_state = self.initial_state
             updated_initial_state[1] = noun
@@ -65,7 +65,7 @@ class IntCode:
                 pass
             else:
                 if new_final_state == output:
-                    return noun, verb
+                    return 100 * noun + verb
 
     def __repr__(self):
         """Use this function for generating a representation for the class instance.
