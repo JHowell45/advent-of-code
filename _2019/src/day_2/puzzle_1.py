@@ -80,7 +80,11 @@ last computer caught fire. To do this, before running the program, replace posit
 with the value 12 and replace position 2 with the value 2. What value is left at
 position 0 after the program halts?
 """
-from _2019.src.intcode_computer import IntCode
+try:
+    from _2019.src.intcode_computer import IntCode
+except ImportError:
+    from src.intcode_computer import IntCode
+
 
 from .shared_functions import get_puzzle_input
 

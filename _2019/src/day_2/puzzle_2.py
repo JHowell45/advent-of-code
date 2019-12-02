@@ -42,4 +42,18 @@ Find the input noun and verb that cause the program to produce the output 196907
 What is 100 * noun + verb? (For example, if noun=12 and verb=2, the answer would be
 1202.)
 """
-# from _2019.src.intcode_computer import IntCode
+from typing import Tuple
+
+from .shared_functions import get_puzzle_input
+
+try:
+    from _2019.src.intcode_computer import IntCode
+except ImportError:
+    from src.intcode_computer import IntCode
+
+
+
+def day_2_puzzle_2_solution() -> Tuple[int, int]:
+    initial_state = get_puzzle_input()
+    initial_state = [int(opcode) for opcode in initial_state.split(",")]
+    return IntCode(initial_state=initial_state).calculate_verb_and_noun(19690720)
