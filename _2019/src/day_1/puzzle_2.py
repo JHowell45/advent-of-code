@@ -52,7 +52,7 @@ def calculate_all_fuel_requirements(mass: int) -> int:
             return total_fuel
 
 
-def calculate_total_fuel_for_mass_and_fuel() -> int:
+def day_1_puzzle_2_solution() -> int:
     """Use this function to return the total fuel for all of the modules.
 
     This function is used for returning the total fuel cost for all of the module

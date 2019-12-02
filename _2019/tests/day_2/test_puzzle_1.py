@@ -14,4 +14,4 @@ from _2019.src.day_2.puzzle_1 import IntCode
     ],
 )
 def test_calculate_fuel(initial_state: str, final_state: str):
-    assert IntCode(initial_state).final_state == final_state
+    assert ",".join([str(x) for x in IntCode(initial_state).final_state]) == final_state

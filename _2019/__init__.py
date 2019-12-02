@@ -1,12 +1,12 @@
 try:
     from _2019.src.day_1 import (
-        calculate_total_fuel_requirement,
-        calculate_total_fuel_for_mass_and_fuel,
+        day_1_puzzle_1_solution,
+        day_1_puzzle_2_solution,
     )
 except ImportError:
     from src.day_1 import (
-        calculate_total_fuel_requirement,
-        calculate_total_fuel_for_mass_and_fuel,
+        day_1_puzzle_1_solution,
+        day_1_puzzle_2_solution,
     )
 try:
     from _2019.src.day_2 import IntCode, day_2_puzzle_1_solution
@@ -15,8 +15,8 @@ except ImportError:
 
 
 def main():
-    print(f"Day 1, Puzzle 1: {calculate_total_fuel_requirement()}")
-    print(f"Day 1, Puzzle 2: {calculate_total_fuel_for_mass_and_fuel()}")
+    print(f"Day 1, Puzzle 1: {day_1_puzzle_1_solution()}")
+    print(f"Day 1, Puzzle 2: {day_1_puzzle_2_solution()}")
     print(f"Day 2, Puzzle 1: {day_2_puzzle_1_solution()}")
 
 
