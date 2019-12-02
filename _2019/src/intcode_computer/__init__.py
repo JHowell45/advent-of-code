@@ -70,20 +70,7 @@ class IntCode:
                     initial_state=updated_initial_state
                 )[0]
             except ValueError as e:
-                print(noun, verb, e)
+                pass
             else:
                 if calculated_output == output:
                     return 100 * noun + verb
-
-    def __repr__(self):
-        """Use this function for generating a representation for the class instance.
-
-        This function is used for generating the string representation for the
-        current IntCode class instance.
-
-        :return: the string representation for the class instance.
-        """
-        return (
-            f"<{self.__class__.__name__} Initial State: {self.initial_state}, "
-            f"Final State: {self.final_state}>"
-        )
