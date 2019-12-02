@@ -1,4 +1,4 @@
-from itertools import combinations
+from itertools import product
 from typing import List, Union
 
 
@@ -53,7 +53,15 @@ class IntCode:
         return final_state
 
     def calculate_verb_and_noun(self, output: int) -> int:
-        for noun, verb in combinations(range(100), 2):
+        """Use this function for calculating the verb and noun calculation.
+
+        This function is used for calculating the verb and noun calculation for a
+        given expected output.
+
+        :param output: the output wanted.
+        :return: the noun and verb calculation.
+        """
+        for noun, verb in product(range(100), range(100)):
             updated_initial_state = self.initial_state
             updated_initial_state[1] = noun
             updated_initial_state[2] = verb
@@ -64,7 +72,7 @@ class IntCode:
             except ValueError:
                 pass
             else:
-                if new_final_state == output:
+                if new_final_state[0] == output:
                     return 100 * noun + verb
 
     def __repr__(self):
