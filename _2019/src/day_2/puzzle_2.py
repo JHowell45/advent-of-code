@@ -42,6 +42,7 @@ Find the input noun and verb that cause the program to produce the output 196907
 What is 100 * noun + verb? (For example, if noun=12 and verb=2, the answer would be
 1202.)
 """
+from itertools import product
 
 from .shared_functions import get_puzzle_input
 
@@ -54,4 +55,11 @@ except ImportError:
 def day_2_puzzle_2_solution() -> int:
     initial_state = get_puzzle_input()
     initial_state = [int(opcode) for opcode in initial_state.split(",")]
-    return IntCode(initial_state=initial_state).calculate_verb_and_noun(19690720)
+    # return IntCode(initial_state=initial_state).calculate_verb_and_noun(19690720)
+    for x, y in product(range(100), range(100)):
+        initial_state = get_puzzle_input()
+        initial_state = [int(opcode) for opcode in initial_state.split(",")]
+        initial_state[1] = x
+        initial_state[2] = y
+        if IntCode(initial_state=initial_state).final_state[0] == 19690720:
+            return 100 * x + y
