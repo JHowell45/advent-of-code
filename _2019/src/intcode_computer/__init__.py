@@ -1,4 +1,5 @@
-from typing import List, Union
+from itertools import combinations
+from typing import List, Tuple, Union
 
 
 class IntCode:
@@ -24,22 +25,47 @@ class IntCode:
 
         :return: the final state.
         """
-        final_state = self.initial_state
-        for instruction_pointer in range(0, len(self.initial_state), 4):
-            opcode = self.initial_state[instruction_pointer]
+        return self.__generate_final_state(initial_state=self.initial_state)
+
+    def __generate_final_state(self, initial_state: List[int]) -> List[int]:
+        """Use this function for generating the final state for a given input.
+
+        This function is used for generating the final state for the given initial
+        state.
+
+        :return: the final state.
+        """
+        final_state = initial_state
+        for instruction_pointer in range(0, len(initial_state), 4):
+            opcode = initial_state[instruction_pointer]
             if opcode == 1 or opcode == 2:
-                noun = self.initial_state[self.initial_state[instruction_pointer + 1]]
-                verb = self.initial_state[self.initial_state[instruction_pointer + 2]]
-                third_parameter = self.initial_state[instruction_pointer + 3]
+                first_param = initial_state[initial_state[instruction_pointer + 1]]
+                second_param = initial_state[initial_state[instruction_pointer + 2]]
+                third_parameter = initial_state[instruction_pointer + 3]
                 if opcode == 1:
-                    final_state[third_parameter] = noun + verb
+                    final_state[third_parameter] = first_param + second_param
                 else:
-                    final_state[third_parameter] = noun * verb
+                    final_state[third_parameter] = first_param * second_param
             elif opcode == 99:
                 return final_state
             else:
                 raise ValueError(f"Incorrect opcode '{opcode}'!!")
         return final_state
+
+    def calculate_verb_and_noun(self, output: int) -> Tuple[int, int]:
+        for noun, verb in combinations(range(100), 2):
+            updated_initial_state = self.initial_state
+            updated_initial_state[1] = noun
+            updated_initial_state[2] = verb
+            try:
+                new_final_state = self.__generate_final_state(
+                    initial_state=updated_initial_state
+                )
+            except ValueError:
+                pass
+            else:
+                if new_final_state == output:
+                    return noun, verb
 
     def __repr__(self):
         """Use this function for generating a representation for the class instance.
