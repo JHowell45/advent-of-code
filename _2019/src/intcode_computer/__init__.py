@@ -37,11 +37,11 @@ class IntCode:
         """
         final_state = initial_state
         for instruction_pointer in range(0, len(initial_state), 4):
-            opcode = initial_state[instruction_pointer]
+            opcode = final_state[instruction_pointer]
             if opcode == 1 or opcode == 2:
-                first_param = initial_state[initial_state[instruction_pointer + 1]]
-                second_param = initial_state[initial_state[instruction_pointer + 2]]
-                third_parameter = initial_state[instruction_pointer + 3]
+                first_param = final_state[final_state[instruction_pointer + 1]]
+                second_param = final_state[final_state[instruction_pointer + 2]]
+                third_parameter = final_state[instruction_pointer + 3]
                 if opcode == 1:
                     final_state[third_parameter] = first_param + second_param
                 else:
