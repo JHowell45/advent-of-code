@@ -66,13 +66,13 @@ class IntCode:
             updated_initial_state[1] = noun
             updated_initial_state[2] = verb
             try:
-                new_final_state = self.__generate_final_state(
+                calculated_output = self.__generate_final_state(
                     initial_state=updated_initial_state
-                )
-            except ValueError:
-                pass
+                )[0]
+            except ValueError as e:
+                print(noun, verb, e)
             else:
-                if new_final_state[0] == output:
+                if calculated_output == output:
                     return 100 * noun + verb
 
     def __repr__(self):
