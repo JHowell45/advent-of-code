@@ -26,7 +26,7 @@ What is the sum of the fuel requirements for all of the modules on your spacecra
 from .shared_functions import calculate_fuel, get_puzzle_input
 
 
-def calculate_total_fuel_requirement() -> int:
+def day_1_puzzle_1_solution() -> int:
     """Use this function to return the total fuel requirements for all of the modules.
 
     This function is used for reading the text file of puzzle data and returning the

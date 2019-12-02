@@ -1,4 +1,2 @@
-from .day_1 import (
-    calculate_total_fuel_for_mass_and_fuel,
-    calculate_total_fuel_requirement,
-)
+from .day_1 import day_1_puzzle_1_solution, day_1_puzzle_2_solution
+from .day_2 import day_2_puzzle_1_solution, day_2_puzzle_2_solution
