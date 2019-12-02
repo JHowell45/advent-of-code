@@ -49,7 +49,7 @@ class IntCode:
             elif opcode == 99:
                 return final_state
             else:
-                raise ValueError(f"Incorrect opcode '{opcode}'!!")
+                raise ValueError(f"Unknown opcode '{opcode}'!!")
         return final_state
 
     def calculate_verb_and_noun(self, output: int) -> int:
