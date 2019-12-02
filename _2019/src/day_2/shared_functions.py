@@ -31,22 +31,20 @@ class IntCode:
         :return: the final state.
         """
         final_state = self.initial_state
-        for index in range(0, len(self.initial_state), 4):
-            opcode = self.initial_state[index]
+        for instruction_pointer in range(0, len(self.initial_state), 4):
+            opcode = self.initial_state[instruction_pointer]
             if opcode == 1 or opcode == 2:
-                first_input_position = self.initial_state[index + 1]
-                second_input_position = self.initial_state[index + 2]
-                output_position = self.initial_state[index + 3]
+                first_parameter = self.initial_state[
+                    self.initial_state[instruction_pointer + 1]
+                ]
+                second_parameter = self.initial_state[
+                    self.initial_state[instruction_pointer + 2]
+                ]
+                third_parameter = self.initial_state[instruction_pointer + 3]
                 if opcode == 1:
-                    final_state[output_position] = (
-                        self.initial_state[first_input_position]
-                        + self.initial_state[second_input_position]
-                    )
+                    final_state[third_parameter] = first_parameter + second_parameter
                 else:
-                    final_state[output_position] = (
-                        self.initial_state[first_input_position]
-                        * self.initial_state[second_input_position]
-                    )
+                    final_state[third_parameter] = first_parameter * second_parameter
             elif opcode == 99:
                 return final_state
             else:
