@@ -84,7 +84,13 @@ from typing import List, Union
 
 
 class IntCode:
-    def __init__(self, initial_state: Union[List[int], str]):
+    """Use this class for creating the IntCode for performing the state computations.
+
+    This class is used for creating an IntCode computer for calculating the final
+    states for a given input state.
+    """
+
+    def __init__(self, initial_state: Union[List[int], str]) -> None:
         if isinstance(initial_state, str):
             self.initial_state = [int(opcode) for opcode in initial_state.split(",")]
         else:
@@ -93,11 +99,55 @@ class IntCode:
 
     @property
     def final_state(self) -> str:
-        if self.__final_state is None:
-            self.__final_state = self.__generate_final_state()
-        return ",".join(self.__final_state)
+        """Use this function for providing the final state property for this instance.
+
+        This function is used for generating and returning the final state attribute
+        for the IntCode class instance.
+
+        :return: the final state.
+        """
+        return ",".join([str(opcode) for opcode in self.__generate_final_state()])
 
     def __generate_final_state(self) -> List[int]:
-        for opcode in self.initial_state:
-            print(opcode)
-        return []
+        """Use this function for generating the final state for the given input.
+
+        This function is used for generating the final state for the given initial
+        state provided to the IntCode instance.
+
+        :return: the generated final state opcodes.
+        """
+        final_state = self.initial_state
+        for index in range(0, len(self.initial_state), 4):
+            opcode = self.initial_state[index]
+            if opcode == 1 or opcode == 2:
+                first_input_position = self.initial_state[index + 1]
+                second_input_position = self.initial_state[index + 2]
+                output_position = self.initial_state[index + 3]
+                if opcode == 1:
+                    final_state[output_position] = (
+                        self.initial_state[first_input_position]
+                        + self.initial_state[second_input_position]
+                    )
+                else:
+                    final_state[output_position] = (
+                        self.initial_state[first_input_position]
+                        * self.initial_state[second_input_position]
+                    )
+            elif opcode == 99:
+                return final_state
+            else:
+                raise ValueError(f"Incorrect opcode '{opcode}'!!")
+        return final_state
+
+    def __repr__(self):
+        """Use this function for generating a representation for the class instance.
+
+        This function is used for generating the string representation for the
+        current IntCode class instance.
+
+        :return: the string representation for the class instance.
+        """
+        return (
+            f"<{self.__class__.__name__} Initial State: {self.initial_state}, "
+            f"Final State: {self.final_state}>"
+        )
