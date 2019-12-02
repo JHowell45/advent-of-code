@@ -1,4 +1,4 @@
-"""Use this for for creating the functions for solving puzzle 1.
+"""Use this for for creating the functions for solving puzzle 2.
 
 During the second Go / No Go poll, the Elf in charge of the Rocket Equation
 Double-Checker stops the launch sequence. Apparently, you forgot to include additional
