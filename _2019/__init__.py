@@ -9,9 +9,9 @@ except ImportError:
         day_1_puzzle_2_solution,
     )
 try:
-    from _2019.src.day_2 import IntCode, day_2_puzzle_1_solution
+    from _2019.src.day_2 import day_2_puzzle_1_solution
 except ImportError:
-    from src.day_2 import IntCode, day_2_puzzle_1_solution
+    from src.day_2 import day_2_puzzle_1_solution
 
 
 def main():

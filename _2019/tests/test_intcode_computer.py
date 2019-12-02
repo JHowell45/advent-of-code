@@ -1,7 +1,7 @@
 """Use this file for testing the functions for day 2 puzzle 1."""
 import pytest
 
-from _2019.src.day_2.puzzle_1 import IntCode
+from _2019.src.intcode_computer import IntCode
 
 
 @pytest.mark.parametrize(
